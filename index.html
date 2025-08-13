@@ -1,0 +1,302 @@
+<!DOCTYPE html><html lang=”en”>
+<head>
+  <meta charset=”UTF-8” />
+  <meta name=”viewport” content=”width=device-width, initial-scale=1” />
+  <title>My Portal</title>
+  <style>
+    :root{
+      --bg: #0b1220;
+      --panel:#111a2b;
+      --muted:#7b88a8;
+      --text:#e6ecff;
+      --brand:#5b8cff;
+      --brand-2:#7ee787;
+      --accent:#ffd166;
+      --danger:#ff6b6b;
+      --radius:16px;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+    }
+    *{box-sizing:border-box}
+    Html,body{height:100%}
+    Body{
+      Margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif;
+      Color:var(--text); background: radial-gradient(1200px 600px at 10% -10%, rgba(91,140,255,.25), transparent 60%),
+                         Radial-gradient(800px 400px at 90% 0%, rgba(126,231,135,.18), transparent 60%),
+                         Var(--bg);
+      Background-attachment: fixed;
+    }
+    A{color:inherit; text-decoration:none}
+    .container{max-width:1100px; margin:0 auto; padding:0 1rem}/* Header */
+Header{
+  Position:sticky; top:0; z-index:10;
+  Background: rgba(11,18,32,.7);
+  Backdrop-filter: blur(8px);
+  Border-bottom:1px solid rgba(255,255,255,.06);
+}
+.nav{display:flex; align-items:center; justify-content:space-between; padding:.8rem 0}
+.brand{display:flex; align-items:center; gap:.6rem; font-weight:700; letter-spacing:.3px}
+.brand-logo{
+  Width:34px; height:34px; display:grid; place-items:center;
+  Border-radius:10px; background:linear-gradient(135deg, var(--brand), var(--brand-2));
+  Box-shadow: var(--shadow);
+  Font-weight:900; color:#0a0f1c
+}
+.nav-links{display:flex; align-items:center; gap:1rem}
+.nav-links a{padding:.5rem .75rem; border-radius:10px; color:var(--muted)}
+.nav-links a.active, .nav-links a:hover{background:rgba(255,255,255,.06); color:var(--text)}
+.nav-actions{display:flex; align-items:center; gap:.6rem}
+.btn{border:0; cursor:pointer; border-radius:12px; padding:.6rem .9rem; font-weight:600}
+.btn.primary{background:linear-gradient(135deg,var(--brand),#6aa4ff); color:#0a0f1c}
+.btn.ghost{background:transparent; color:var(--text); border:1px solid rgba(255,255,255,.15)}
+.hamburger{display:none; background:transparent; border:0; color:var(--text); font-size:1.4rem}
+
+/* Hero */
+.hero{padding:3.2rem 0 2.2rem}
+.hero-grid{display:grid; grid-template-columns:1.1fr .9fr; gap:2rem; align-items:center}
+.hero h1{font-size:clamp(1.8rem, 3.5vw, 3rem); margin:.2rem 0 .8rem}
+.hero p{color:var(--muted); line-height:1.6}
+.hero-card{
+  Background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+  Border:1px solid rgba(255,255,255,.1); border-radius:var(--radius); padding:1rem; box-shadow:var(--shadow)
+}
+
+/* Search */
+.search{
+  Display:flex; gap:.6rem; padding:.6rem; background:rgba(255,255,255,.06);
+  Border:1px solid rgba(255,255,255,.1); border-radius:14px; margin-top:1rem
+}
+.search input{
+  Flex:1; padding:.8rem .9rem; border:0; outline:none; border-radius:10px; background:#0f1828; color:var(--text)
+}
+.search button{padding:.8rem 1rem}
+.tagline{display:flex; gap:.6rem; flex-wrap:wrap; margin-top:.7rem}
+.chip{font-size:.85rem; color:var(--muted); padding:.35rem .6rem; border-radius:999px; background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.08)}
+
+/* Sections */
+Section{padding:1.2rem 0 2.2rem}
+.section-title{display:flex; align-items:center; justify-content:space-between; margin-bottom:.8rem}
+.grid{display:grid; grid-template-columns:repeat(12,1fr); gap:1rem}
+.card{
+  Grid-column:span 4; background:var(--panel); border:1px solid rgba(255,255,255,.08);
+  Border-radius:var(--radius); padding:1rem; box-shadow:var(--shadow)
+}
+.card h3{margin:.2rem 0 .2rem; font-size:1.1rem}
+.card p{color:var(--muted); margin:.3rem 0 .8rem}
+.card .meta{display:flex; align-items:center; justify-content:space-between; font-size:.9rem; color:var(--muted)}
+.card .pill{padding:.3rem .55rem; border-radius:999px; border:1px solid rgba(255,255,255,.12)}
+
+.quick-links .card{grid-column:span 3}
+
+/* Footer */
+Footer{padding:2rem 0; color:var(--muted); border-top:1px solid rgba(255,255,255,.08)}
+
+/* Modal */
+Dialog{width:min(480px, 92vw); border:1px solid rgba(255,255,255,.15); border-radius:18px; background: #0e1524; color:var(--text); box-shadow:var(--shadow)}
+Dialog∷backdrop{background:rgba(0,0,0,.6)}
+.form{display:grid; gap:.7rem}
+.form label{font-size:.9rem; color:var(--muted)}
+.form input{padding:.8rem .9rem; border-radius:12px; border:1px solid rgba(255,255,255,.15); background:#0f1828; color:var(--text)}
+
+/* Responsive */
+@media (max-width: 900px){
+  .hero-grid{grid-template-columns:1fr}
+  .grid .card{grid-column:span 6}
+  .quick-links .card{grid-column:span 6}
+  .nav-links{display:none}
+  .hamburger{display:block}
+}
+@media (max-width: 600px){
+  .grid .card{grid-column:span 12}
+  .quick-links .card{grid-column:span 12}
+}
+
+  </style>
+</head>
+<body>
+  <!—Header / Nav 
+  <header>
+    <div class=”container nav”>
+      <div class=”brand”>
+        <div class=”brand-logo”>P</div>
+        <span>My Portal</span>
+      </div>
+      <nav class=”nav-links” id=”navLinks”>
+        <a href=”#home” class=”active”>Home</a>
+        <a href=”#resources”>Resources</a>
+        <a href=”#news”>News</a>
+        <a href=”#contact”>Contact</a>
+      </nav>
+      <div class=”nav-actions”>
+        <button class=”btn ghost” id=”loginBtn”>Log in</button>
+        <button class=”hamburger” aria-label=”Menu” id=”menuBtn”>☰</button>
+      </div>
+    </div>
+  </header>  <!—Hero   <main id=”home” class=”hero”>
+    <div class=”container hero-grid”>
+      <div>
+        <h1>All your tools in one portal.</h1>
+        <p>Search resources, read announcements, and access your dashboard — all from a single, responsive hub.</p>
+        <form class=”search” id=”searchForm” role=”search” aria-label=”Portal search”>
+          <input id=”searchInput” type=”search” placeholder=”Search resources, pages, or documents…” aria-label=”Search” />
+          <button type=”submit” class=”btn primary”>Search</button>
+        </form>
+        <div class=”tagline”>
+          <span class=”chip”>#announcements</span>
+          <span class=”chip”>#documents</span>
+          <span class=”chip”>#help-center</span>
+        </div>
+      </div>
+      <div class=”hero-card”>
+        <div class=”grid”>
+          <div class=”card” data-title=”Getting Started Guide”>
+            <h3>Getting Started</h3>
+            <p>Quick steps to set up your account and personalize your dashboard.</p>
+            <div class=”meta”><span class=”pill”>Guide</span><span>5 min</span></div>
+          </div>
+          <div class=”card” data-title=”FAQ and Support”>
+            <h3>FAQ & Support</h3>
+            <p>Find answers to common questions or contact support.</p>
+            <div class=”meta”><span class=”pill”>Help</span><span>Updated today</span></div>
+          </div>
+          <div class=”card” data-title=”Download Forms”>
+            <h3>Download Forms</h3>
+            <p>Access application forms, policies, and templates.</p>
+            <div class=”meta”><span class=”pill”>Docs</span><span>12 files</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>  <!—Quick Links   <section id=”resources”>
+    <div class=”container”>
+      <div class=”section-title”>
+        <h2>Quick Links</h2>
+        <a href=”#” class=”chip”>View all</a>
+      </div>
+      <div class=”grid quick-links” id=”cardsGrid”>
+        <div class=”card” data-title=”Student Portal”>
+          <h3>Student Portal</h3>
+          <p>Grades, enrollment, and course materials.</p>
+          <div class=”meta”><span class=”pill”>App</span><span>Open</span></div>
+        </div>
+        <div class=”card” data-title=”Staff Dashboard”>
+          <h3>Staff Dashboard</h3>
+          <p>HR tools, leave requests, and internal news.</p>
+          <div class=”meta”><span class=”pill”>App</span><span>Open</span></div>
+        </div>
+        <div class=”card” data-title=”Library Catalogue”>
+          <h3>Library Catalogue</h3>
+          <p>Search books, articles, and e-resources.</p>
+          <div class=”meta”><span class=”pill”>Search</span><span>Open</span></div>
+        </div>
+        <div class=”card” data-title=”IT Helpdesk”>
+          <h3>IT Helpdesk</h3>
+          <p>Report issues, track tickets, and knowledge base.</p>
+          <div class=”meta”><span class=”pill”>Support</span><span>Open</span></div>
+        </div>
+      </div>
+    </div>
+  </section>  <!—News / Announcements   <section id=”news”>
+    <div class=”container”>
+      <div class=”section-title”>
+        <h2>Announcements</h2>
+        <a href=”#” class=”chip”>RSS</a>
+      </div>
+      <div class=”grid”>
+        <article class=”card” data-title=”Maintenance Window”>
+          <h3>Planned Maintenance</h3>
+          <p>Services may be unavailable on Friday, 20:00–22:00 CAT.</p>
+          <div class=”meta”><span class=”pill”>System</span><time>Aug 13</time></div>
+        </article>
+        <article class=”card” data-title=”New Feature: Dark Mode”>
+          <h3>New Feature: Themes</h3>
+          <p>Switch between light and dark themes in Settings.</p>
+          <div class=”meta”><span class=”pill”>Update</span><time>Aug 10</time></div>
+        </article>
+        <article class=”card” data-title=”Policy Update”>
+          <h3>Policy Update</h3>
+          <p>Review the updated privacy policy and cookie notice.</p>
+          <div class=”meta”><span class=”pill”>Policy</span><time>Aug 05</time></div>
+        </article>
+      </div>
+    </div>
+  </section>  <!—Contact   <section id=”contact”>
+    <div class=”container”>
+      <div class=”section-title”>
+        <h2>Contact</h2>
+      </div>
+      <div class=”grid”>
+        <div class=”card” style=”grid-column:span 6”>
+          <h3>Get in touch</h3>
+          <p>Email: bwalyasanford70@gmail.com<br/>Phone: +260 974916006</p>
+          <button class=”btn ghost” onclick=”document.getElementById(‘loginModal’).showModal()”>Open Login</button>
+        </div>
+        <div class=”card” style=”grid-column:span 6”>
+          <h3>Location</h3>
+          <p>Plot 123, Portal Avenue, Lusaka</p>
+          <div class=”meta”><span class=”pill”>Hours</span><span>Mon–Fri 08:00–17:00</span></div>
+        </div>
+      </div>
+    </div>
+  </section>  <!—Footer   <footer>
+    <div class=”container”>
+      © <span id=”year”></span> My Portal — All rights reserved.
+    </div>
+  </footer>  <!—Login Modal   <dialog id=”loginModal”>
+    <form method=”dialog” class=”form” id=”loginForm” style=”padding:1rem”>
+      <h3 style=”margin:.2rem 0 0”>Sign in</h3>
+      <p style=”margin:0; color:var(--muted)”>Demo-only (no backend yet)</p>
+      <label>Email</label>
+      <input required type=”email” placeholder=you@example.com id=”email” />
+      <label>Password</label>
+      <input required type=”password” placeholder=”••••••••” id=”password” />
+      <div style=”display:flex; gap:.6rem; justify-content:flex-end; margin-top:.4rem”>
+        <button class=”btn ghost” value=”cancel”>Cancel</button>
+        <button class=”btn primary” value=”login”>Sign in</button>
+      </div>
+    </form>
+  </dialog>  <script>
+    // Current year
+    Document.getElementById(‘year’).textContent = new Date().getFullYear();
+
+    // Mobile menu toggle
+    Const menuBtn = document.getElementById(‘menuBtn’);
+    Const navLinks = document.getElementById(‘navLinks’);
+    menuBtn?.addEventListener(‘click’, () => {
+      const visible = getComputedStyle(navLinks).display !== ‘none’;
+      navLinks.style.display = visible ? ‘none’ : ‘flex’;
+    });
+
+    // Login modal open
+    Const loginBtn = document.getElementById(‘loginBtn’);
+    Const loginModal = document.getElementById(‘loginModal’);
+    loginBtn?.addEventListener(‘click’, () => loginModal.showModal());
+
+    // Fake login handler
+    Document.getElementById(‘loginForm’)?.addEventListener(‘submit’, (e) => {
+      e.preventDefault();
+      const email = document.getElementById(‘email’).value;
+      const name = email.split(‘@’)[0] || ‘Guest’;
+      loginModal.close();
+      alert(`Welcome, ${name}! (Demo only)`);
+    });
+
+    // Client-side search filter
+    Const searchForm = document.getElementById(‘searchForm’);
+    Const searchInput = document.getElementById(‘searchInput’);
+    Const cards = Array.from(document.querySelectorAll(‘[data-title]’));
+
+    Function filterCards(q){
+      Const query = q.trim().toLowerCase();
+      Cards.forEach(card => {
+        Const title = card.dataset.title.toLowerCase();
+        Const text = card.textContent.toLowerCase();
+        Const hit = !query || title.includes(query) || text.includes(query);
+        Card.style.display = hit ? ‘’ : ‘none’;
+      });
+    }
+
+    searchForm?.addEventListener(‘submit’, (e)=>{ e.preventDefault(); filterCards(searchInput.value); });
+    searchInput?.addEventListener(‘input’, ()=> filterCards(searchInput.value));
+  </script></body>
+</html>
+
